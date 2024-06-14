@@ -20,8 +20,8 @@ This script is designed to run SimNIBS simulations on a set of subjects. The scr
 #### Run Simulation on All Subjects
 
 ```bash
-python run_sim.py --a
 python run_sim.py --s ASD001 ASD002
+python run_sim.py --a
 ```
 ## Script Description
 
