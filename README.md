@@ -12,7 +12,7 @@ This script is designed to run SimNIBS simulations on a set of subjects. The scr
 
 ### Command-Line Arguments
 
-- `--subjects`: List of subjects to run the simulation on. Provide subject directories without the common prefix (`ASD`, etc.).
+- `--s`: List of subjects to run the simulation on. Provide subject directories without the common prefix (`ASD`, etc.).
 - `--a`: Run the simulation on all subjects in the specified directory.
 
 ### Examples
