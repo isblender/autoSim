@@ -87,17 +87,26 @@ def run_simulation(subjects):
             move_results(subject_dir, subject)
         except Exception as e:
             print(f'Error running simulation for {subject}: {e}')
-
+def get_subjects_in_results(results_folder):
+    subject_list = []
+    for directory in os.listdir(results_folder):
+        if directory[0:3] == 'ASD':
+            subject_list.append(directory)
+    return get_subjects(subject_list)
 if __name__ == "__main__":
     # Parse CL arguments to allow for all subjects vs just a few
     parser = argparse.ArgumentParser(description='Run simulations on subjects.')
     parser.add_argument('--s', nargs='+', help='List subjects to run the simulation on')
     parser.add_argument('--a', action='store_true', help='Run the simulation on all subjects')
+    parser.add_argument('--c', action='store_true', help='Only compile results')
 
     args = parser.parse_args()
     if args.a and args.subjects:
         print('Error: You cannot use both --a and --s arguments simultaneously.')
         exit(1)
+    elif args.c:
+        subjects = get_subjects_in_results
+        compile_results(subjects, results_folder, results_file)
     elif args.a:
         subjects = get_subjects(None)
     else:
