@@ -6,7 +6,7 @@ import simnibs
 
 # Get current directory, make results directory if not already existing
 curr_folder = '/nafs/sgreen/fmri/Prisma/TMS/Simnibs/subjects/'
-scripts_folder = '/nafs/sgreen/fmri/Prisma/TMS/Simnibs/scripts/'
+scripts_folder = '/nafs/sgreen/fmri/Prisma/TMS/Simnibs/scripts /'
 results_folder = os.path.join(scripts_folder, 'results')
 results_file = os.path.join(results_folder, 'overall_results.txt')
 
