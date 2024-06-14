@@ -16,6 +16,7 @@ if not os.path.exists(results_folder):
 else:
     print(f"Directory already exists: {results_folder}")
 
+# Compile all subject's results to one central .txt file
 def compile_results(subjects, results_folder, results_file):
     if not os.path.exists(results_file):
         os.system(f'touch {results_file}')
@@ -32,6 +33,8 @@ def compile_results(subjects, results_folder, results_file):
                     output_file.write(contents)
                     output_file.write('\n')
                     print(f'Wrote {subject}\'s results to overall results.')
+
+# Find all subject data folders and put into dictionary for simulations
 def get_subjects(subject_list):
     subjects = {}
     for directory in os.listdir(curr_folder):
@@ -41,6 +44,8 @@ def get_subjects(subject_list):
             subject_dir = os.path.join(curr_folder, directory, 'T1_MPRAGE/')
             subjects[subject_dir] = name
     return subjects
+
+# Specific subject simulation running
 def sim(subject_folder, subject):
     try:
         print(f'Starting session with {subject}')
@@ -63,6 +68,8 @@ def sim(subject_folder, subject):
         os.sleep(15)
     except Exception as e:
         print(f'Error running simulation for {subject}: {e}')
+
+# Move results from simulation to 
 def move_results(subject_folder, subject):
     original_results_path = os.path.join(subject_folder, 'tms_simu')
     new_results_name = subject[4:]
@@ -82,13 +89,16 @@ def run_simulation(subjects):
             print(f'Error running simulation for {subject}: {e}')
 
 if __name__ == "__main__":
+    # Parse CL arguments to allow for all subjects vs just a few
     parser = argparse.ArgumentParser(description='Run simulations on subjects.')
-    parser.add_argument('--s', nargs='+', help='List of subjects to run the simulation on')
+    parser.add_argument('--s', nargs='+', help='List subjects to run the simulation on')
     parser.add_argument('--a', action='store_true', help='Run the simulation on all subjects')
 
     args = parser.parse_args()
-
-    if args.a:
+    if args.a and args.subjects:
+        print('Error: You cannot use both --a and --s arguments simultaneously.')
+        exit(1)
+    elif args.a:
         subjects = get_subjects(None)
     else:
         subjects = get_subjects(args.s)
