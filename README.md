@@ -21,7 +21,7 @@ This script is designed to run SimNIBS simulations on a set of subjects. The scr
 
 ```bash
 python group_test.py --a
-python group_test.py --subjects ASD001 ASD002
+python group_test.py --s ASD001 ASD002
 ```
 ## Script Description
 
