@@ -111,6 +111,7 @@ if __name__ == "__main__":
         exit(1)
     elif args.c:
         subjects = get_subjects_in_results
+        print(subjects)
         compile_results(subjects, results_folder, results_file)
     elif args.a:
         subjects = get_subjects(None)
