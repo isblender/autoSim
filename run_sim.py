@@ -57,7 +57,6 @@ def in_results(subject):
 # Specific subject simulation running
 def sim(subject_folder, subject):
     try:
-        print(f'Starting session with {subject}')
         os.chdir(subject_folder)
         S = sim_struct.SESSION()
         S.subpath = subject
@@ -94,6 +93,8 @@ def move_results(subject_folder, subject):
 def run_simulation(subjects):
     for subject_dir, subject in subjects.items():
         try:
+            print(f'Starting session in {subject_dir} with {subject}')
+            time.sleep(5)
             sim(subject_dir, subject)
             move_results(subject_dir, subject)
         except Exception as e:
