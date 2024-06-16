@@ -114,14 +114,17 @@ if __name__ == "__main__":
         subjects = get_subjects_in_results(results_folder)
         print(subjects)
         compile_results(subjects, results_folder, results_file)
-        exit
     elif args.a:
         subjects = get_subjects(None)
+        if subjects:
+            run_simulation(subjects)
+            compile_results(subjects, results_folder, results_file)
+        else:
+            print('No subjects found to run the simulation on.')
     else:
         subjects = get_subjects(args.s)
-
-    if subjects:
-        run_simulation(subjects)
-        compile_results(subjects, results_folder, results_file)
-    else:
-        print('No subjects found to run the simulation on.')
+        if subjects:
+            run_simulation(subjects)
+            compile_results(subjects, results_folder, results_file)
+        else:
+            print('No subjects found to run the simulation on.')
