@@ -45,12 +45,14 @@ def get_subjects(subject_list):
     subjects = {}
     for directory in os.listdir(curr_folder):
         # Check if there is mandated list
-        if directory[0:3] == 'ASD' and (not subject_list or directory in subject_list):
+        if directory[0:3] == 'ASD' and (not subject_list or directory in subject_list) and not in_results(directory):
             name = 'm2m_' + directory
             subject_dir = os.path.join(curr_folder, directory, 'T1_MPRAGE/')
             subjects[subject_dir] = name
     return subjects
-
+def in_results(subject):
+    potential_subject_results = os.path.join(results_folder, subject)
+    return os.path.exists(potential_subject_results)
 # Specific subject simulation running
 def sim(subject_folder, subject):
     try:
