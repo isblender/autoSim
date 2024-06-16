@@ -97,6 +97,7 @@ def get_subjects_in_results(results_folder):
     for directory in os.listdir(results_folder):
         if directory[0:3] == 'ASD':
             subject_list.append(directory)
+    print(subject_list)
     return get_subjects(subject_list)
 if __name__ == "__main__":
     # Parse CL arguments to allow for all subjects vs just a few
