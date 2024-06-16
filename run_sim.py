@@ -27,18 +27,19 @@ def compile_results(subjects, results_folder, results_file):
         except Exception as e:
             print(f'Error: {e}')
     with open(results_file, 'w') as output_file:
+        print('Opened results file')
         for _, subject in subjects.items():
-            subject_results_file = os.path.join(results_folder, subject, 'fields_summary.txt')
+            subject_results_file = os.path.join(results_folder, subject[4:], 'fields_summary.txt')
             # Check if the results.txt file exists in the current subject directory
             if os.path.exists(subject_results_file):
                 # Open and read the contents of the results.txt file
                 with open(subject_results_file, 'r') as input_file:
+                    print(f'Opened {subject} {subject_results_file} to write')
                     contents = input_file.read()
                     # Write the contents to the overall_results.txt file
                     output_file.write(contents)
                     output_file.write('\n')
                     print(f'Wrote {subject}\'s results to overall results.')
-
 # Find all subject data folders and put into dictionary for simulations
 def get_subjects(subject_list):
     subjects = {}
