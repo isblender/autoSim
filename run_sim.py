@@ -34,7 +34,7 @@ def compile_results(subjects, results_folder, results_file):
             if os.path.exists(subject_results_file):
                 # Open and read the contents of the results.txt file
                 with open(subject_results_file, 'r') as input_file:
-                    print(f'Opened {subject} {subject_results_file} to write')
+                    #print(f'Opened {subject} {subject_results_file} to write')
                     contents = input_file.read()
                     # Write the contents to the overall_results.txt file
                     output_file.write(contents)
@@ -108,7 +108,7 @@ if __name__ == "__main__":
     parser.add_argument('--c', action='store_true', help='Only compile results')
 
     args = parser.parse_args()
-    if args.a and args.subjects:
+    if args.a and args.s:
         print('Error: You cannot use both --a and --s arguments simultaneously.')
         exit(1)
     elif args.c:
