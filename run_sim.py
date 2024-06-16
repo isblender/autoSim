@@ -1,4 +1,5 @@
 import os
+import time
 import shutil
 import argparse
 from simnibs import sim_struct, run_simnibs
@@ -73,7 +74,9 @@ def sim(subject_folder, subject):
         run_simnibs(S)
         print(f'Simulation finished with {subject}')
         # Pause to allow Simnibs to read-in data and create head meshes
-        os.sleep(15)
+        print('I\'m tired...')
+        time.sleep(15)
+        print('Back to work')
     except Exception as e:
         print(f'Error running simulation for {subject}: {e}')
 
