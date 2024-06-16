@@ -111,7 +111,7 @@ if __name__ == "__main__":
         print('Error: You cannot use both --a and --s arguments simultaneously.')
         exit(1)
     elif args.c:
-        subjects = get_subjects_in_results
+        subjects = get_subjects_in_results(results_folder)
         print(subjects)
         compile_results(subjects, results_folder, results_file)
     elif args.a:
