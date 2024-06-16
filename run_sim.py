@@ -8,7 +8,8 @@ import simnibs
 curr_folder = '/nafs/sgreen/fmri/Prisma/TMS/Simnibs/subjects/'
 scripts_folder = '/nafs/sgreen/fmri/Prisma/TMS/Simnibs/scripts /'
 results_folder = os.path.join(scripts_folder, 'results')
-results_file = os.path.join(results_folder, 'overall_results.txt')
+results_file_path = os.path.join(results_folder, 'overall_results.txt')
+results_file = 'overall_results.txt'
 
 if not os.path.exists(results_folder):
     os.makedirs(results_folder)
@@ -18,9 +19,13 @@ else:
 
 # Compile all subject's results to one central .txt file
 def compile_results(subjects, results_folder, results_file):
+    os.chdir(results_folder)
     if not os.path.exists(results_file):
-        os.system(f'touch {results_file}')
-        print(f"'{results_file}' has been created in '{results_folder}'.")
+        try:
+            os.system(f'touch {results_file}')
+            print(f"'{results_file}' has been created in '{results_folder}'.")
+        except Exception as e:
+            print(f'Error: {e}')
     with open(results_file, 'w') as output_file:
         for _, subject in subjects.items():
             subject_results_file = os.path.join(results_folder, subject, 'fields_summary.txt')
