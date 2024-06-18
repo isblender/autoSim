@@ -1,3 +1,25 @@
+'''
+This script is designed to run SimNIBS simulations on a set of subjects. 
+The script can handle running simulations on a single subject, multiple specified subjects, or all subjects in a given directory.
+
+Usage:
+Run all subjects
+python run_sim.py --a
+
+Run only specific subjects
+python run_sim.py --s ASD..... ASD..... etc
+
+Compile all subjects in results, only for if theres error with automatic compiling
+python run_sim.py --c
+
+Made by:
+Isaac Blender
+isblender@ucla.edu
+
+Nikki Hellman
+nikkihellman@g.ucla.edu
+'''
+
 import os
 import time
 import shutil

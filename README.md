@@ -14,6 +14,7 @@ This script is designed to run SimNIBS simulations on a set of subjects. The scr
 
 - `--s`: List of subjects to run the simulation on. Provide subject directories without the common prefix (`ASD`, etc.).
 - `--a`: Run the simulation on all subjects in the specified directory.
+- `--c`: Compile all subjects in results, only for if theres error with automatic compiling.
 
 ### Examples
 
@@ -22,6 +23,7 @@ This script is designed to run SimNIBS simulations on a set of subjects. The scr
 ```bash
 python run_sim.py --s ASD001 ASD002
 python run_sim.py --a
+python run_sim.py --c
 ```
 ## Script Description
 
