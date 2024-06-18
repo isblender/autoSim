@@ -17,7 +17,7 @@ Isaac Blender
 isblender@ucla.edu
 
 Nikki Hellman
-nikkihellman@g.ucla.edu
+nikkihellman@icloud.com
 '''
 
 import os
